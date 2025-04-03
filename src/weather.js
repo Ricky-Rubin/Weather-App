@@ -8,11 +8,6 @@ function weatherApp() {
     const weatherStatus = document.querySelector('#weather-status');
     const humidityLevel = document.querySelector('#humidity');
     const windSpeed = document.querySelector('#wind');
-    const form = document.querySelector('form');
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-    });
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
@@ -21,9 +16,7 @@ function weatherApp() {
     const defaultCity = 'London';
     const defaultDate = currentDate;
 
-    async function showWeatherInfo() {
-        const searchInput = document.querySelector('#search-input');
-        const city = searchInput.value;
+    async function showWeatherInfo(city) {
         const date = currentDate;
 
         const modifiedLink = searchLink.replace('[location]', city).replace('[date]', date);
@@ -46,7 +39,11 @@ function weatherApp() {
         }
     }
 
-    showWeatherInfo();
+    searchButton.addEventListener('click', () => {
+        const searchInput = document.querySelector('#search-input');
+        const cityName = searchInput.value;
+        showWeatherInfo(cityName);
+    })
 }
 
 export { weatherApp };
