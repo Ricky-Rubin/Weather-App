@@ -32,6 +32,9 @@ function weatherApp() {
             const temperatureValue = mainData.currentConditions.temp;
             const humidityValue = mainData.currentConditions.humidity;
             const windValue = mainData.currentConditions.windspeed;
+
+            const icon = await import(`./icons/${weatherIcon}.svg`);
+            weatherImg.src = icon.default;
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
