@@ -8,6 +8,11 @@ function weatherApp() {
     const weatherStatus = document.querySelector('#weather-status');
     const humidityLevel = document.querySelector('#humidity');
     const windSpeed = document.querySelector('#wind');
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+    });
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
@@ -17,6 +22,7 @@ function weatherApp() {
     const defaultDate = currentDate;
 
     async function showWeatherInfo() {
+        const searchInput = document.querySelector('#search-input');
         const city = searchInput.value;
         const date = currentDate;
 
@@ -25,6 +31,8 @@ function weatherApp() {
             const response = await fetch(modifiedLink, { mode: 'cors'});
             const mainData = await response.json();
 
+            cityName.textContent = mainData.resolvedAddress;
+
             const fullLocation = mainData.resolvedAddress;
             const weatherCondition = mainData.currentConditions.conditions;
             const weatherIcon = mainData.currentConditions.icon;
@@ -32,7 +40,7 @@ function weatherApp() {
             const humidityValue = mainData.currentConditions.humidity;
             const windValue = mainData.currentConditions.windspeed;
             
-            console.log(fullocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
+            console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
             console.error('It Appears that the city you entered is not valid. Please try again.', error);
         }
