@@ -41,6 +41,12 @@ function weatherApp() {
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
             console.error('It Appears that the city you entered is not valid. Please try again.', error);
+            cityName.textContent = 'It appears that the city you entered is not valid. Please try again.';
+            weatherImg.style.display = 'none';
+            // temperature.innerText = '';
+            // weatherStatus.innerText = '';
+            // humidityLevel.innerText = '';
+            // windSpeed.innerText = '';
         }
     }
 
@@ -53,11 +59,11 @@ function weatherApp() {
         if (validName) {
             const modCityName = cityName.replace(/\s/, '%20');
             showWeatherInfo(modCityName);
-        } else if (cityName) {
+        } 
+        
+        if (cityName) {
             showWeatherInfo(cityName);
-        } else {
-            cityName.textContent = 'Please enter a valid city name.';
-        }
+        } 
     }
 
     searchButton.addEventListener('click', () => {
