@@ -20,6 +20,7 @@ function weatherApp() {
         const date = currentDate;
 
         const modifiedLink = searchLink.replace('[location]', city).replace('[date]', date);
+        console.log(modifiedLink);
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
             const mainData = await response.json();
@@ -35,6 +36,7 @@ function weatherApp() {
 
             const icon = await import(`./icons/${weatherIcon}.svg`);
             weatherImg.src = icon.default;
+            weatherImg.style.display = 'block';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
@@ -42,10 +44,24 @@ function weatherApp() {
         }
     }
 
-    searchButton.addEventListener('click', () => {
+    function checkCityName() {
+        const regEx = /^[A-Za-z]+\s[A-Za-z]+$/
         const searchInput = document.querySelector('#search-input');
-        const cityName = searchInput.value;
-        showWeatherInfo(cityName);
+        const cityName = searchInput.value.trim();
+        const validName = regEx.test(cityName);
+
+        if (validName) {
+            const modCityName = cityName.replace(/\s/, '%20');
+            showWeatherInfo(modCityName);
+        } else if (cityName) {
+            showWeatherInfo(cityName);
+        } else {
+            cityName.textContent = 'Please enter a valid city name.';
+        }
+    }
+
+    searchButton.addEventListener('click', () => {
+        checkCityName();
     })
 }
 
