@@ -9,6 +9,8 @@ function weatherApp() {
     const humidityLevel = document.querySelector('#humidity');
     const windSpeed = document.querySelector('#wind');
     const svgLogos = document.getElementsByClassName('svg');
+    const toggleButton = document.querySelector('#toggle');
+    const tempSwitch = document.querySelector('#temp-switch-text');
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
@@ -78,7 +80,7 @@ function weatherApp() {
     }
 
     function checkCityName() {
-        const regEx = /^([A-Za-z]+(\.)?)\s[A-Za-z]+$/
+        const regEx = /^([A-Za-z]+(\.)?)\s[A-Za-z]+$/;
         const locationName = searchInput.value.trim();
         const validName = regEx.test(locationName);
 
@@ -89,11 +91,31 @@ function weatherApp() {
             showWeatherInfo(locationName);
         } else {
             cityName.textContent = 'Please enter a valid city name.';
-        }
+        };
+    };
+
+    function convertToCelsius() {
+        const tempValue = temperature.textContent.split(': ')[1].split('°')[0];
+        const celsiusValue = ((tempValue - 32) * 5) / 9;
+        temperature.innerHTML = '';
+        temperature.textContent = `Temperature: ${celsiusValue.toFixed(1)}°C`;
     }
 
     searchButton.addEventListener('click', () => {
         checkCityName();
+    })
+
+    toggleButton.addEventListener('change', () => {
+        if (toggle.checked) {
+            convertToCelsius();
+            tempSwitch.textContent = 'Toggle for °F';
+        } else {
+            const tempValue = temperature.textContent.split(': ')[1].split('°')[0];
+            const fahrenheitCalc = (tempValue * 9) / 5 + 32;
+            temperature.innerHTML = '';
+            temperature.textContent = `Temperature: ${fahrenheitCalc.toFixed(1)}°F`;
+            tempSwitch.textContent = 'Toggle for °F';
+        }
     })
 }
 
