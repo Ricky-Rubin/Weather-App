@@ -17,6 +17,21 @@ function weatherApp() {
 
         const modifiedLink = searchLink.replace('[location]', city);
         console.log(modifiedLink);
+
+        const tempSpan = document.createElement('span');
+        tempSpan.className = 'temp-span';
+
+        const humiditySpan = document.createElement('span');
+        humiditySpan.className = 'humidity-span';
+        humiditySpan.textContent = '';
+
+        const windSpan = document.createElement('span');
+        windSpan.className = 'wind-span';
+        windSpan.textContent = '';
+
+        const weatherStatusSpan = document.createElement('span');
+        weatherStatusSpan.className = 'weather-status-span';
+        weatherStatusSpan.textContent = '';
         
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
@@ -33,11 +48,22 @@ function weatherApp() {
             weatherImg.src = icon.default;
             weatherImg.style.display = 'block';
 
-            cityName.textContent = fullLocation;  
-            temperature.innerHTML += 'Temperature: ' + temperatureValue + '°F'; 
-            weatherStatus.innerHTML += 'Weather: ' + weatherCondition;
-            humidityLevel.innerHTML += 'Humidity: ' + humidityValue + '%';
-            windSpeed.innerHTML += 'Wind: ' + windValue + ' mph';
+            cityName.textContent = fullLocation;
+            tempSpan.textContent = `Temperature: ${temperatureValue}°F`;
+            humiditySpan.textContent = `Humidity: ${humidityValue}%`;
+            windSpan.textContent = `Wind: ${windValue} mph`;
+            weatherStatusSpan.textContent = `Weather: ${weatherCondition}`;
+
+            temperature.appendChild(tempSpan);
+            humidityLevel.appendChild(humiditySpan);
+            windSpeed.appendChild(windSpan);
+            weatherStatus.appendChild(weatherStatusSpan);
+
+            // cityName.textContent = fullLocation;  
+            // temperature.innerHTML += 'Temperature: ' + temperatureValue + '°F'; 
+            // weatherStatus.innerHTML += 'Weather: ' + weatherCondition;
+            // humidityLevel.innerHTML += 'Humidity: ' + humidityValue + '%';
+            // windSpeed.innerHTML += 'Wind: ' + windValue + ' mph';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
