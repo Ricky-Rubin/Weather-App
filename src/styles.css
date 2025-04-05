@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
     background-color: #F1E3B1; 
 }
@@ -7,3 +9,14 @@ img {
     width: 400px;
     height: 400px;
 }
+
+.weather-info {
+    width: 210px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
