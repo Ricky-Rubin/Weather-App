@@ -11,10 +11,12 @@ function weatherApp() {
     const svgLogos = document.getElementsByClassName('svg');
     const toggleButton = document.querySelector('#toggle');
     const tempSwitch = document.querySelector('#temp-switch-text');
+    const toggleContainer = document.querySelector('.toggle-container');
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
     const defaultCity = 'London';
+    toggleContainer.style.display = 'none';
 
     async function showWeatherInfo(city) {
 
@@ -32,7 +34,10 @@ function weatherApp() {
 
         const weatherStatusSpan = document.createElement('span');
         weatherStatusSpan.className = 'weather-status-span';
-        
+
+        toggleButton.checked = false;
+        tempSwitch.textContent = 'Toggle for °C';
+                
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
             const mainData = await response.json();        
@@ -66,6 +71,8 @@ function weatherApp() {
             humidityLevel.appendChild(humiditySpan);
             windSpeed.appendChild(windSpan);
             weatherStatus.appendChild(weatherStatusSpan);
+
+            toggleContainer.style.display = 'flex';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
@@ -106,7 +113,7 @@ function weatherApp() {
     })
 
     toggleButton.addEventListener('change', () => {
-        if (toggle.checked) {
+        if (toggleButton.checked) {
             convertToCelsius();
             tempSwitch.textContent = 'Toggle for °F';
         } else {
@@ -114,7 +121,7 @@ function weatherApp() {
             const fahrenheitCalc = (tempValue * 9) / 5 + 32;
             temperature.innerHTML = '';
             temperature.textContent = `Temperature: ${fahrenheitCalc.toFixed(1)}°F`;
-            tempSwitch.textContent = 'Toggle for °F';
+            tempSwitch.textContent = 'Toggle for °C';
         }
     })
 }

@@ -1,14 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
-    background-color: #F1E3B1; 
+    /* background-color: #F1E3B1;  */
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #F1E3B1, #F1E3B1);
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    border-radius: 24px;
+}
+
+hr {
+    width: 74%;
+    height: 2px;
+    background-color: #000;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.city-name {
+    font-size: 20px;
+    font-weight: 600;
+    text-wrap: wrap;
 }
 
 img { 
     display: none;
-    width: 185px;
-    height: 185px;
+    width: 195px;
+    height: 195px;
+    margin-top: -30px;
+    margin-bottom: -20px;
+}
+
+.img-container {
+    padding: 15px 0px
+}
+
+.wind,
+.humidity,
+.temp,
+.weather-status {
+    margin-top: -1px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: -1px;
 }
 
 .weather-info {
@@ -29,22 +79,22 @@ img {
 .toggle-container {
     display: flex;
     align-items: center;
-  }
-  
-  .switch {
+}
+
+.switch {
     position: relative;
     display: inline-block;
     width: 38px;
     height: 20px;
-  }
-  
-  .switch input {
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -54,9 +104,9 @@ img {
     background-color: #ccc;
     transition: 0.4s;
     border-radius: 15px;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 14px;
@@ -66,18 +116,19 @@ img {
     bottom: 3px;
     background-color: white;
     transition: 0.4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #4CAF50;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(16px);
-  }
-  
-  #temperature {
-    margin-right: 10px;
-  }
-  
+}
 
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+#temp-switch-text {
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+  
