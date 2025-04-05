@@ -34,10 +34,10 @@ function weatherApp() {
             weatherImg.style.display = 'block';
 
             cityName.textContent = fullLocation;  
-            temperature.textContent = temperatureValue + '°F'; 
-            weatherStatus.textContent = weatherCondition;
-            humidityLevel.textContent = humidityValue + '%';
-            windSpeed.innerHTML += 'Wind ' + windValue + ' mph';
+            temperature.innerHTML += 'Temperature: ' + temperatureValue + '°F'; 
+            weatherStatus.innerHTML += 'Weather: ' + weatherCondition;
+            humidityLevel.innerHTML += 'Humidity: ' + humidityValue + '%';
+            windSpeed.innerHTML += 'Wind: ' + windValue + ' mph';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {

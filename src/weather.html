@@ -17,9 +17,18 @@
                 <img id="weather-img" src="#"/>
             </div>
 
-            <p class="temp" id="temp"></p>
-            <p class="weather-status" id="weather-status"></p>
-            <p class="humidity" id="humidity"></p>
+            <p class="temp" id="temp">
+                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128" xml:space="preserve"><path style="fill:#171617" d="M64.595 127.81c-.162 0-.321-.001-.485-.004-16.868-.294-30.978-13.871-30.978-30.266 0-11.018 5.067-19.474 11.236-24.612v-60.58C44.368 5.612 50.62.191 57.353.191h11.106c6.733 0 12.924 5.421 12.924 12.157v61.021c8.225 6.253 14.118 16.595 12.875 27.494l-.179.001c-1.736 15.2-14.738 26.946-29.484 26.946zM57.352 8.42c-2.453 0-4.76 1.473-4.76 3.927v65.031l-1.838 1.11c-6.389 3.559-9.552 9.969-9.552 19.052 0 11.981 10.556 22.286 23.005 22.502 10.941.262 20.657-8.622 21.963-20.06.983-8.614-3.114-16.489-11.181-21.064l-1.833-1.116V12.347c0-2.454-2.246-3.927-4.699-3.927H57.352zm9.635 74.95V20.765h-8.225v63.2c-8.225 2.226-9.785 7.609-9.785 13.925 0 8.308 6.199 15.038 14.503 15.038s14.934-6.73 14.934-15.038c0-6.937-3.202-12.786-11.427-14.52z"/></svg>
+            </p>
+
+            <p class="weather-status" id="weather-status">
+                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path d="M23.634 36.002a2.284 2.284 0 0 0 2.162-1.554 6.098 6.098 0 0 1 5.813-4.214 6.166 6.166 0 0 1 5.842 4.204 2.25 2.25 0 0 0 2.133 1.532c.964.032 1.949.032 1.949.032a6.498 6.498 0 0 1 6.5 6.5v.003a6.501 6.501 0 0 1-6.5 6.499H21.684a6.5 6.5 0 0 1-6.499-6.499v-.003a6.497 6.497 0 0 1 6.499-6.5h1.95z" style="fill:none;stroke:#222a33;stroke-width:1.5px"/><path d="M11.864 44.68a6.499 6.499 0 0 1-4.5-6.184v-.003a6.499 6.499 0 0 1 6.499-6.5h3.778a6.163 6.163 0 0 1 6.147-5.768c2.76 0 5.099 1.82 5.88 4.324M37.232 26.996a6.107 6.107 0 0 1 2.98-.771 6.165 6.165 0 0 1 5.842 4.205 2.251 2.251 0 0 0 2.133 1.531c.964.032 1.95.032 1.95.032a6.501 6.501 0 0 1 6.499 6.5v.003a6.499 6.499 0 0 1-6.499 6.5h-2.6" style="fill:none;stroke:#222a33;stroke-width:1.5px"/><path d="M38.864 25.996c0-3.312 2.688-6 6-6a6.003 6.003 0 0 1 5.658 8M44.864 14.996v2M52.642 18.217l-1.414 1.415M55.864 25.996h-2M37.085 18.217l1.415 1.415" style="fill:none;stroke:#222a33;stroke-width:1.5px"/></svg>
+            </p>
+
+            <p class="humidity" id="humidity">
+                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path d="M29.85 17.399a2.838 2.838 0 0 1 4.323-.016C37.872 21.766 45 31.619 45 42.484c0 7.175-5.825 13-13 13s-13-5.825-13-13c0-10.681 7.157-20.651 10.85-25.085z" style="fill:none;stroke:#222a33;stroke-width:1.5px"/><path d="M41 42.234a9.954 9.954 0 0 1-5.451 8.876M14 38.152c-4.038-1.146-7-4.863-7-9.266 0-8.177 5.663-15.792 8.303-18.898a1.78 1.78 0 0 1 2.653-.016c2.048 2.362 5.891 7.397 7.53 13.408M38.549 23.325c1.663-5.92 5.478-10.966 7.503-13.346a1.79 1.79 0 0 1 2.664-.01C51.354 13.043 57 20.563 57 28.886c0 4.403-2.962 8.12-7 9.266" style="fill:none;stroke:#222a33;stroke-width:1.5px"/></svg>
+            </p>
+
             <p class="wind" id="wind">
                 <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path d="M17 29.307h18M39.5 29.307h10.848A5.652 5.652 0 0 0 56 23.655v-.003A5.651 5.651 0 0 0 50.348 18h-4.372M17 34.693h8M33.446 34.693h16.902A5.651 5.651 0 0 1 56 40.345v.003A5.651 5.651 0 0 1 50.348 46h-4.372M8 17.921h22.726a2.719 2.719 0 0 0 2.72-2.72V15.2a2.719 2.719 0 0 0-2.72-2.72h-2.291M8 46.079h22.726a2.719 2.719 0 0 1 2.72 2.72v.001a2.719 2.719 0 0 1-2.72 2.72h-2.291" style="fill:none;stroke:#222a33;stroke-width:1.5px"/></svg>
             </p>
