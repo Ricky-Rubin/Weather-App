@@ -20,10 +20,7 @@ function weatherApp() {
         
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
-            const mainData = await response.json();
-
-            cityName.textContent = mainData.resolvedAddress;  
-            temperature.textContent = `${mainData.currentConditions.temp}°F`;         
+            const mainData = await response.json();        
 
             const fullLocation = mainData.resolvedAddress;
             const weatherCondition = mainData.currentConditions.conditions;
@@ -35,30 +32,35 @@ function weatherApp() {
             const icon = await import(`./icons/${weatherIcon}.svg`);
             weatherImg.src = icon.default;
             weatherImg.style.display = 'block';
+
+            cityName.textContent = fullLocation;  
+            temperature.textContent = temperatureValue + '°F'; 
+            weatherStatus.textContent = weatherCondition;
+            humidityLevel.textContent = humidityValue + '%';
+            windSpeed.textContent = windValue + ' mph';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
             console.error('It Appears that the city you entered is not valid. Please try again.', error);
             cityName.textContent = 'It appears that the city you entered is not valid. Please try again.';
             weatherImg.style.display = 'none';
-            // temperature.innerText = '';
-            // weatherStatus.innerText = '';
-            // humidityLevel.innerText = '';
-            // windSpeed.innerText = '';
+            temperature.textContent = '';
+            weatherStatus.textContent= '';
+            humidityLevel.textContent = '';
+            windSpeed.textContent = '';
         }
     }
 
     function checkCityName() {
         const regEx = /^[A-Za-z]+\s[A-Za-z]+$/
-        const searchInput = document.querySelector('#search-input');
-        const cityName = searchInput.value.trim();
-        const validName = regEx.test(cityName);
+        const locationName = searchInput.value.trim();
+        const validName = regEx.test(locationName);
 
         if (validName) {
-            const modCityName = cityName.replace(/\s/, '%20');
+            const modCityName = locationName.replace(/\s/, '%20');
             showWeatherInfo(modCityName);
-        } else if (cityName) {
-            showWeatherInfo(cityName);
+        } else if (locationName) {
+            showWeatherInfo(locationName);
         } else {
             cityName.textContent = 'Please enter a valid city name.';
         }
