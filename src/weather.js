@@ -9,23 +9,21 @@ function weatherApp() {
     const humidityLevel = document.querySelector('#humidity');
     const windSpeed = document.querySelector('#wind');
 
-    let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date]?key=66DFJ3GYA56QMRUNZ83AEG838';
+    let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
-    const theDate = new Date();
-    const currentDate = theDate.toISOString().slice(0, 10);
     const defaultCity = 'London';
-    const defaultDate = currentDate;
 
     async function showWeatherInfo(city) {
-        const date = currentDate;
 
-        const modifiedLink = searchLink.replace('[location]', city).replace('[date]', date);
+        const modifiedLink = searchLink.replace('[location]', city);
         console.log(modifiedLink);
+        
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
             const mainData = await response.json();
 
-            cityName.textContent = mainData.resolvedAddress;
+            cityName.textContent = mainData.resolvedAddress;  
+            temperature.textContent = `${mainData.currentConditions.temp}°F`;         
 
             const fullLocation = mainData.resolvedAddress;
             const weatherCondition = mainData.currentConditions.conditions;
@@ -59,11 +57,11 @@ function weatherApp() {
         if (validName) {
             const modCityName = cityName.replace(/\s/, '%20');
             showWeatherInfo(modCityName);
-        } 
-        
-        if (cityName) {
+        } else if (cityName) {
             showWeatherInfo(cityName);
-        } 
+        } else {
+            cityName.textContent = 'Please enter a valid city name.';
+        }
     }
 
     searchButton.addEventListener('click', () => {
