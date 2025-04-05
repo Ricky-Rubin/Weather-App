@@ -52,7 +52,7 @@ function weatherApp() {
     }
 
     function checkCityName() {
-        const regEx = /^[A-Za-z]+\s[A-Za-z]+$/
+        const regEx = /^([A-Za-z]+(\.)?)\s[A-Za-z]+$/
         const locationName = searchInput.value.trim();
         const validName = regEx.test(locationName);
 
