@@ -8,6 +8,7 @@ function weatherApp() {
     const weatherStatus = document.querySelector('#weather-status');
     const humidityLevel = document.querySelector('#humidity');
     const windSpeed = document.querySelector('#wind');
+    const svgLogos = document.getElementsByClassName('svg');
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
@@ -54,6 +55,10 @@ function weatherApp() {
             humiditySpan.textContent = `Humidity: ${humidityValue}%`;
             windSpan.textContent = `Wind: ${windValue} mph`;
             weatherStatusSpan.textContent = `Weather: ${weatherCondition}`;
+
+            for (let i = 0; i < svgLogos.length; i++) {
+                svgLogos[i].style.display = 'block';
+            };
 
             temperature.appendChild(tempSpan);
             humidityLevel.appendChild(humiditySpan);
