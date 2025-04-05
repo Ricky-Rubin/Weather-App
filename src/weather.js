@@ -17,6 +17,7 @@ function weatherApp() {
 
     const defaultCity = 'London';
     toggleContainer.style.display = 'none';
+    searchInput.focus();
 
     async function showWeatherInfo(city) {
 
@@ -37,7 +38,7 @@ function weatherApp() {
 
         toggleButton.checked = false;
         tempSwitch.textContent = 'Toggle for °C';
-                
+
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
             const mainData = await response.json();        
