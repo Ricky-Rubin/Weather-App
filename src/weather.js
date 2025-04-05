@@ -37,7 +37,7 @@ function weatherApp() {
             temperature.textContent = temperatureValue + '°F'; 
             weatherStatus.textContent = weatherCondition;
             humidityLevel.textContent = humidityValue + '%';
-            windSpeed.textContent = windValue + ' mph';
+            windSpeed.innerHTML += 'Wind ' + windValue + ' mph';
             
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
