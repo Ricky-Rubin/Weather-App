@@ -128,6 +128,12 @@ function weatherApp() {
             temperature.innerHTML = '';
             temperature.textContent = `Temperature: ${fahrenheitCalc.toFixed(1)}°F`;
             tempSwitch.textContent = 'Toggle for °C';
+        };
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") {
+            checkCityName();
         }
     })
 }
