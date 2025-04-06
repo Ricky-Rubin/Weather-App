@@ -84,6 +84,11 @@ function weatherApp() {
             weatherStatus.textContent= '';
             humidityLevel.textContent = '';
             windSpeed.textContent = '';
+
+            toggleContainer.style.display = 'none';
+            for (let i = 0; i < svgLogos.length; i++) {
+                svgLogos[i].style.display = 'none';
+            };
         }
     }
 
