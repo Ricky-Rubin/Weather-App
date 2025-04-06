@@ -56,16 +56,6 @@ body {
 #search-button {
     border-radius: 48%;
     border: none;
-    /* outline: 1px solid black; */
-}
-
-hr {
-    width: 74%;
-    height: 2px;
-    background-color: #000;
-    border: none;
-    margin-bottom: 10px;
-    display: none;
 }
 
 .city-name {
