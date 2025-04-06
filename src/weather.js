@@ -78,6 +78,7 @@ function weatherApp() {
             console.log(fullLocation, weatherCondition, weatherIcon, temperatureValue, humidityValue, windValue);
         } catch (error) {
             console.error('It Appears that the city you entered is not valid. Please try again.', error);
+
             cityName.textContent = 'It appears that the city you entered is not valid. Please try again.';
             weatherImg.style.display = 'none';
             temperature.textContent = '';
