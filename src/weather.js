@@ -12,6 +12,7 @@ function weatherApp() {
     const toggleButton = document.querySelector('#toggle');
     const tempSwitch = document.querySelector('#temp-switch-text');
     const toggleContainer = document.querySelector('.toggle-container');
+    const loader = document.querySelector('#loader');
 
     let searchLink = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]?key=66DFJ3GYA56QMRUNZ83AEG838';
 
@@ -38,6 +39,8 @@ function weatherApp() {
 
         toggleButton.checked = false;
         tempSwitch.textContent = 'Toggle for °C';
+
+        loader.style.display = 'block';
 
         try {
             const response = await fetch(modifiedLink, { mode: 'cors'});
@@ -90,6 +93,8 @@ function weatherApp() {
             for (let i = 0; i < svgLogos.length; i++) {
                 svgLogos[i].style.display = 'none';
             };
+        } finally {
+            loader.style.display = 'none';
         }
     }
 
